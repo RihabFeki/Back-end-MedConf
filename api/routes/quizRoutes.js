@@ -2,7 +2,8 @@
 
 module.exports = function (app) {
     let userHandlers=require('../controllers/userController');
-    let congresHandlers = require('../controllers/congresController');
+    let congresHandlers = require('../controllers/congresController')
+    let contributionsHandlers = require('../controllers/contributionController')
 
     app.route('/auth/register')
         .post(userHandlers.register);
@@ -22,7 +23,9 @@ module.exports = function (app) {
 
     app.route('/congres/:congresId')
         .get(userHandlers.loginRequired,userHandlers.adminRequired,congresHandlers.findById_congres,congresHandlers.read)
-        .post(userHandlers.loginRequired,userHandlers.adminRequired,congresHandlers.update_congres);
+        .post(userHandlers.loginRequired,userHandlers.adminRequired,congresHandlers.update_congres)
+    app.route('/soumission/:congresId')
+        .get(userHandlers.loginRequired,userHandlers.adminRequired,contributionsHandlers.read_all_soumissions);
 
     app.param('congresId', congresHandlers.findById_congres);
 

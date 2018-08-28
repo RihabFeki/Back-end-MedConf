@@ -13,17 +13,35 @@ let ContributionSchema = new Schema({
         required: true,
         trim: true
     },
-    contenu: [{
-        cle: {
-            type: String
-        },
-        valeur: {
-            type: String
-        }
-    }],
+    description: {
+        type: String,
+        trim: true
+    },
+    etat: {
+        type: Number
+    },
+    /*  contenu: [{
+          cle: {
+              type: String
+          },
+          valeur: {
+              type: String
+          }
+      }],*/
     date_publication: {
         type: Date,
         default: Date.now
+    },
+
+    id_comite_scientifique: {
+
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
+    },
+    id_congres: {
+
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Congres'
     }
 });
 

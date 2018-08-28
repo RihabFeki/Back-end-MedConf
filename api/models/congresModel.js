@@ -55,6 +55,9 @@ let CongresSchema = new Schema({
             trim: true
         }
     },
+    active : {
+        type : Number
+    },
     president:{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
@@ -64,7 +67,7 @@ let CongresSchema = new Schema({
         ref: 'User'
     },
     comite_organisation:{
-        type: [mongoose.Schema.Types.ObjectId],
+        type: mongoose.Schema.Types.ObjectId,
         ref: 'User'
     },
     seances: {
